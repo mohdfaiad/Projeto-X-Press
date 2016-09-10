@@ -1,0 +1,25 @@
+unit uFrmMapa;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
+  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
+  uFrmTelaToolBar, FMX.Controls.Presentation, FMX.Layouts;
+
+type
+  TfrmTelaToolBar1 = class(TfrmTelaToolBar)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmTelaToolBar1: TfrmTelaToolBar1;
+
+implementation
+
+{$R *.fmx}
+
+end.

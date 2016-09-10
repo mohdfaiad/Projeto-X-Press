@@ -1,0 +1,24 @@
+inherited frmMain_LgXhdpiPh: TfrmMain_LgXhdpiPh
+  ClientHeight = 695
+  ClientWidth = 450
+  DesignerMasterStyle = 3
+  inherited lytMain: TLayout
+    Size.Width = 450.000000000000000000
+    Size.Height = 695.000000000000000000
+  end
+  inherited MultiView1: TMultiView
+    Size.Height = 695.000000000000000000
+    Visible = False
+    inherited lstMnuMain: TListBox
+      Size.Height = 695.000000000000000000
+      Viewport.Width = 249.000000000000000000
+      Viewport.Height = 695.000000000000000000
+      inherited lstgrpListas: TListBoxGroupHeader
+        inherited ImageViewer1: TImageViewer
+          Viewport.Width = 82.000000000000000000
+          Viewport.Height = 81.000000000000000000
+        end
+      end
+    end
+  end
+end

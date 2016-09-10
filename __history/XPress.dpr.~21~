@@ -1,0 +1,25 @@
+program XPress;
+
+uses
+  System.StartUpCopy,
+  FMX.Forms,
+  uFrmEsqueciSenha in 'uFrmEsqueciSenha.pas' {frmRedefinirSenha},
+  uFrmLogin in 'uFrmLogin.pas' {frmLogin},
+  uFrmCadastro in 'uFrmCadastro.pas' {frmCadastro},
+  uFrmPrincipal in 'uFrmPrincipal.pas' {frmMain},
+  uFrmCarregando in 'uFrmCarregando.pas' {frmCarregando},
+  uFrmTelaToolBar in 'uFrmTelaToolBar.pas' {frmTelaToolBar},
+  uFrmMapa in 'uFrmMapa.pas' {frmTelaToolBar1};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TfrmMain, frmMain);
+  Application.CreateForm(TfrmMain, frmMain);
+  Application.CreateForm(TfrmCarregando, frmCarregando);
+  Application.CreateForm(TfrmTelaToolBar, frmTelaToolBar);
+  Application.CreateForm(TfrmMapa, frmMapa);
+  Application.CreateForm(TfrmTelaToolBar1, frmTelaToolBar1);
+  Application.Run;
+end.

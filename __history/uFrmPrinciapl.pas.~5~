@@ -1,0 +1,137 @@
+unit uFrmPrinciapl;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.ListBox,
+  FMX.Layouts, FMX.Controls.Presentation, FMX.MultiView, FMX.Objects, uFrmStart,
+  FMX.VirtualKeyboard, FMX.Platform, uFrmCarregando;
+
+type
+  TfrmPrincipal = class(TForm)
+    Layout1: TLayout;
+    MultiView1: TMultiView;
+    lstMnuMain: TListBox;
+    lstgrpListas: TListBoxGroupHeader;
+    lstitTitulos: TListBoxItem;
+    lstitUsuarios: TListBoxItem;
+    lstitTitulosAlugados: TListBoxItem;
+    lstgrpConfig: TListBoxGroupHeader;
+    lstitLogin: TListBoxItem;
+    lstPreferencias: TListBoxItem;
+    recBackground: TRectangle;
+    procedure FormCreate(Sender: TObject);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+    procedure lstitTitulosClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    fStart : TfrmStart;
+    fCarregando : TfrmCarregando;
+    procedure ShowForm(AObject: TFmxObject);
+    procedure ShowBackground(AParent: TFmxObject; AOnClick: TNotifyEvent = nil);
+    procedure HideBackground;
+  end;
+
+var
+  frmPrincipal: TfrmPrincipal;
+
+implementation
+
+{$R *.fmx}
+
+{ TfrmPrincipal }
+
+procedure TfrmPrincipal.FormCreate(Sender: TObject);
+begin
+  {Layout Escuro Global}
+  recBackground.Visible := False;
+  recBackground.Align   := TAlignLayout.Contents;
+
+  {Modifica a largura do ListBox para a mesma do formulário, pois o mesmo está como Align = None}
+  lstMnuMain.Width      :=  Self.ClientWidth;
+  lstMnuMain.Position.X := -Self.ClientWidth;
+
+  //Traz para frente o layout principal evitando sobreposição de listas
+  Layout1.BringToFront;
+end;
+
+procedure TfrmPrincipal.FormKeyUp(Sender: TObject; var Key: Word;
+  var KeyChar: Char; Shift: TShiftState);
+var
+  FService : IFMXVirtualKeyboardService;
+
+begin
+
+end;
+
+procedure TfrmPrincipal.HideBackground;
+begin
+  recBackground.AnimateFloat('opacity', 0, 0.1);
+  recBackground.Visible := False;
+end;
+
+procedure TfrmPrincipal.lstitTitulosClick(Sender: TObject);
+begin
+  if not Assigned(fStart) then
+    fStart := TfrmStart.Create(Self);
+
+  MultiView1.MasterButton := fStart.spbBack;
+  {Forçamos o fechamento do menu no clique do item}
+  MultiView1.HideMaster;
+
+  {Adiciona o Layout de Pedidos ao Layout Principal que controla tudo}
+  Layout1.AddObject(fStart.Layout1);
+
+  {Deixa todos os layouts invisíveis e deixa o layout alvo visível}
+  ShowForm(fStart.Layout1);
+end;
+
+procedure TfrmPrincipal.ShowBackground(AParent: TFmxObject;
+  AOnClick: TNotifyEvent);
+begin
+  recBackground.OnClick := AOnClick;
+  recBackground.Parent  := AParent;
+  recBackground.BringToFront;
+  recBackground.Opacity := 0;
+  recBackground.Visible := True;
+  recBackground.AnimateFloat('opacity', 0.5, 0.1);
+end;
+
+procedure TfrmPrincipal.ShowForm(AObject: TFmxObject);
+var
+  I           : Integer;
+  strFRM      : String;
+  FListaForms : TStringList;
+begin
+  FListaForms := TStringList.Create;
+
+  for I := 0 to Pred(Self.Layout1.Children.Count) do
+  begin
+   TControl(Self.Layout1.Children[I]).Visible :=
+      TControl(Self.Layout1.Children[I]) = TControl(AObject);
+
+    strFRM := UpperCase(TControl(Self.Layout1.Children[I]).Owner.Name);
+    if ((strFRM <> UpperCase(SELF.Name)) and (strFRM <> UpperCase(fStart.Name))) and
+      not (TControl(Self.Layout1.Children[I]).Visible) then
+      {Adiciona na Lista de Destruição dos Forms}
+      FListaForms.Add(strFRM);
+  end;
+
+  for I := Pred(FListaForms.Count) downto 0 do
+  begin
+    if (Assigned(fCarregando)) and (FListaForms[I] = UpperCase(fCarregando.Name)) then
+    begin
+      fCarregando.DisposeOf;
+      fCarregando := nil;
+      FListaForms.Delete(I);
+    end;
+  end;
+
+  FListaForms.DisposeOf;
+end;
+
+end.

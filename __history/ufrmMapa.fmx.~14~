@@ -1,0 +1,43 @@
+inherited frmMapa: TfrmMapa
+  Caption = 'frmTelaToolBar1'
+  DesignerMasterStyle = 3
+  inherited Layout1: TLayout
+    inherited ToolBar1: TToolBar
+      inherited Label1: TLabel
+        Text = 'X-Press Delivery'
+      end
+    end
+    object WebBrowser1: TWebBrowser
+      Align = Client
+      Size.Width = 640.000000000000000000
+      Size.Height = 432.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Edit1: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 1
+      Position.X = 152.000000000000000000
+      Position.Y = 64.000000000000000000
+      Size.Width = 353.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      object SearchEditButton1: TSearchEditButton
+        CanFocus = False
+        Cursor = crArrow
+        Size.Width = 32.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+      end
+    end
+  end
+  object LocationSensor1: TLocationSensor
+    Active = True
+    LocationChange = lctLarge
+    Accuracy = 10.000000000000000000
+    Distance = 10.000000000000000000
+    OnLocationChanged = LocationSensor1LocationChanged
+    Left = 488
+    Top = 128
+  end
+end

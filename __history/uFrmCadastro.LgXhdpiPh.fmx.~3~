@@ -1,0 +1,88 @@
+inherited frmCadastro_LgXhdpiPh: TfrmCadastro_LgXhdpiPh
+  ClientHeight = 695
+  ClientWidth = 450
+  DesignerMasterStyle = 3
+  inherited Layout1: TLayout
+    Size.Width = 450.000000000000000000
+    Size.Height = 647.000000000000000000
+    inherited Layout2: TLayout
+      Size.Width = 450.000000000000000000
+      Size.Height = 49.000000000000000000
+      inherited RoundRect1: TRoundRect
+        Size.Width = 433.000000000000000000
+        inherited Edit1: TEdit
+          Size.Width = 400.000000000000000000
+          Size.Height = 29.000000000000000000
+        end
+      end
+    end
+    inherited Layout3: TLayout
+      Size.Width = 450.000000000000000000
+      Size.Height = 49.000000000000000000
+      inherited RoundRect3: TRoundRect
+        Size.Width = 433.000000000000000000
+        inherited Edit3: TEdit
+          Size.Width = 400.000000000000000000
+          Size.Height = 29.000000000000000000
+        end
+      end
+    end
+    inherited Layout4: TLayout
+      Align = Horizontal
+      Size.Width = 450.000000000000000000
+      Size.Height = 49.000000000000000000
+      inherited RoundRect4: TRoundRect
+        Size.Width = 433.000000000000000000
+        inherited Edit4: TEdit
+          Size.Width = 400.000000000000000000
+          Size.Height = 29.000000000000000000
+        end
+      end
+    end
+    inherited Layout5: TLayout
+      Position.Y = 210.000000000000000000
+      Size.Width = 450.000000000000000000
+      Size.Height = 49.000000000000000000
+      inherited RoundRect5: TRoundRect
+        Size.Width = 433.000000000000000000
+        inherited Edit5: TEdit
+          Size.Width = 400.000000000000000000
+          Size.Height = 29.000000000000000000
+        end
+      end
+    end
+    inherited Layout6: TLayout
+      Align = Horizontal
+      Position.Y = 260.000000000000000000
+      Size.Width = 450.000000000000000000
+      Size.Height = 49.000000000000000000
+      inherited RoundRect6: TRoundRect
+        Size.Width = 433.000000000000000000
+        inherited Edit6: TEdit
+          Size.Width = 400.000000000000000000
+          Size.Height = 29.000000000000000000
+        end
+      end
+    end
+    inherited Layout7: TLayout
+      Position.Y = 311.000000000000000000
+      Size.Width = 450.000000000000000000
+      Size.Height = 49.000000000000000000
+    end
+    inherited Layout8: TLayout
+      Position.Y = 63.000000000000000000
+      Size.Width = 450.000000000000000000
+      Size.Height = 49.000000000000000000
+      inherited RoundRect2: TRoundRect
+        Size.Width = 433.000000000000000000
+        inherited Edit2: TEdit
+          Size.Width = 400.000000000000000000
+          Size.Height = 29.000000000000000000
+        end
+      end
+    end
+  end
+  inherited ToolBar1: TToolBar
+    Size.Width = 450.000000000000000000
+  end
+end

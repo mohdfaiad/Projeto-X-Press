@@ -1,0 +1,90 @@
+object frmRedefinirSenha: TfrmRedefinirSenha
+  Left = 0
+  Top = 0
+  Caption = 'Form3'
+  ClientHeight = 480
+  ClientWidth = 640
+  Fill.Kind = Solid
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 3
+  object Brush1: TBrushObject
+    StyleName = 'Brush1'
+    Brush.Kind = Solid
+    Left = 128
+  end
+  object Layout1: TLayout
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object ToolBar1: TToolBar
+      Size.Width = 640.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      TintColor = xFFFFB206
+      object Label3: TLabel
+        Align = Client
+        Size.Width = 640.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.HorzAlign = Center
+        Text = 'Redefinir Senha'
+        object Button1: TButton
+          Align = Left
+          Size.Width = 73.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          Text = 'Voltar'
+          OnClick = Button1Click
+        end
+      end
+    end
+  end
+  object Layout3: TLayout
+    Align = Horizontal
+    Position.Y = 228.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 38.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object RoundRect1: TRoundRect
+      Align = Center
+      Fill.Color = claWhitesmoke
+      Size.Width = 297.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      object Edit1: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        StyleLookup = 'transparentedit'
+        TabOrder = 0
+        Position.X = 16.000000000000000000
+        Size.Width = 265.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        TextPrompt = 'E-mail'
+      end
+    end
+  end
+  object Layout4: TLayout
+    Align = Horizontal
+    Position.Y = 265.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 38.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    object Button2: TButton
+      Align = Center
+      Size.Width = 73.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Enviar'
+      OnClick = Button2Click
+    end
+  end
+end

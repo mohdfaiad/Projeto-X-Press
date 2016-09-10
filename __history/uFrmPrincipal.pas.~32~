@@ -1,0 +1,327 @@
+unit uFrmPrincipal;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts, FMX.ListBox,
+  FMX.Ani, FMX.Objects, FMX.MultiView,
+  Data.FireDACJSONReflect,
+
+  FMX.VirtualKeyboard,
+  FMX.Platform,
+  {$IFDEF ANDROID}
+  FMX.Helpers.Android,
+  FMX.Platform.Android,
+  {$ENDIF}
+
+  {Forms do Projeeto}
+  UntUsuarios,
+  uFrmStart,
+  FMX.StdCtrls,
+  FMX.Controls.Presentation,
+  FMX.Edit, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, ufrmMapa,
+  FMX.ExtCtrls;
+
+type
+  TfrmMain = class(TForm)
+    lytMain: TLayout;
+    lstMnuMain: TListBox;
+    lstgrpListas: TListBoxGroupHeader;
+    lstgrpConfig: TListBoxGroupHeader;
+    lstitTitulos: TListBoxItem;
+    lstitLogin: TListBoxItem;
+    MultiView1: TMultiView;
+    recBackground: TRectangle;
+    styleAndroid: TStyleBook;
+    lstPreferencias: TListBoxItem;
+    styleWindows: TStyleBook;
+    styleIOS: TStyleBook;
+    ListBoxItem1: TListBoxItem;
+    ImageViewer1: TImageViewer;
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure lstitTitulosClick(Sender: TObject);
+    procedure lstitUsuariosClick(Sender: TObject);
+    procedure lstitLoginClick(Sender: TObject);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+    procedure MultiView1StartShowing(Sender: TObject);
+    procedure MultiView1StartHiding(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    FUsuarios : TfrmUsuarios;
+    fStart : TfrmStart;
+    frmMapa : TFrmMapa;
+    procedure exibirLogin();
+    {$IFDEF ANDROID}
+
+    {$ENDIF}
+
+    procedure ShowForm(AObject: TFmxObject);
+    procedure ShowBackground(AParent: TFmxObject; AOnClick: TNotifyEvent = nil);
+    procedure HideBackground;
+    procedure exibirFrmLogim();
+  end;
+
+var
+  frmMain: TfrmMain;
+
+implementation
+
+{$R *.fmx}
+{$R *.iPhone4in.fmx IOS}
+{$R *.LgXhdpiPh.fmx ANDROID}
+
+{ TfrmMain }
+
+procedure TfrmMain.exibirFrmLogim;
+
+begin
+
+
+end;
+
+procedure TfrmMain.exibirLogin;
+begin
+  {if not Assigned(fLogin) then
+    fLogin := TfrmLogin.Create(Self);
+
+ // MultiView1.MasterButton := fLogin.Button2;
+  //MultiView1.HideMaster;
+
+   self.Fill.Color := TAlphaColorRec.Orangered;
+
+  {Adiciona o Layout de Pedidos ao Layout Principal que controla tudo
+  lytMain.AddObject(fLogin.Layout1);
+
+  {Deixa todos os layouts invisíveis e deixa o layout alvo visível
+  ShowForm(fLogin.Layout1);
+
+   if not Assigned(fLogin) then
+    fLogin := TfrmLogin.Create(Self);
+
+       fLogin.ShowModal(procedure(ModalResult: TModalResult)
+        begin
+          if ModalResult = mrOK then
+          begin
+            ShowMessage('Welcome');
+            fLogin.DisposeOf;
+          end;
+          fLogin.DisposeOf;
+        end);
+                }
+end;
+
+procedure TfrmMain.FormActivate(Sender: TObject);
+begin
+  exibirFrmLogim;
+end;
+
+Procedure TfrmMain.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  {Libera total de memóriA os formulários criados}
+ { if Assigned(FTitulos) then
+    FTitulos.DisposeOf;    }
+
+end;
+
+procedure TfrmMain.FormCreate(Sender: TObject);
+begin
+  {Layout Escuro Global}
+  recBackground.Visible := False;
+  recBackground.Align   := TAlignLayout.Contents;
+
+  {Modifica a largura do ListBox para a mesma do formulário, pois o mesmo está como Align = None}
+  lstMnuMain.Width      :=  Self.ClientWidth;
+  lstMnuMain.Position.X := -Self.ClientWidth;
+
+  //Traz para frente o layout principal evitando sobreposição de listas
+  lytMain.BringToFront;
+
+  //Força o Clik da Tela de Mapa
+  exibirLogin;
+
+  lstitTitulosClick(Sender);
+
+  {$IFDEF ANDROID}
+    Self.StyleBook := styleAndroid;
+  {$ENDIF}
+
+  {$IFDEF IOS}
+    Self.StyleBook := styleIOS;
+  {$ENDIF}
+
+  {$IFDEF MSWINDOWS}
+    Self.StyleBook := styleWindows;
+  {$ENDIF}
+end;
+
+
+procedure TfrmMain.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+  Shift: TShiftState);
+var
+  FService : IFMXVirtualKeyboardService;
+
+begin
+  {Recebe o estado do teclado virtual}
+  TPlatformServices.Current.SupportsPlatformService(IFMXVirtualKeyboardService, IInterface(FService));
+  {Se o botão back pressionado e o teclado virtual ativo, não faz nada}
+  if Key = vkHardwareBack then
+  begin
+    if (FService <> nil) and (TVirtualKeyboardState.Visible in FService.VirtualKeyBoardState) then
+    begin
+      //Reservado, não faz nada
+    end
+    else
+    begin
+      {Verifica qual formulário está ativo e então chama o método Voltar}
+      {Se NÃO estiver com a listagem de pedidos aberta}
+      {$Region 'Menu'}
+      if MultiView1.IsShowed then
+      begin
+        MultiView1.HideMaster;
+        Key := 0;
+      end;
+      {$EndRegion}
+
+      Key := 0;
+    end;
+  end
+  {Botão Menu do Android}
+  else if Key = vkMenu then
+  begin
+    if (FService <> nil) and (TVirtualKeyboardState.Visible in FService.VirtualKeyBoardState) then
+    begin
+      //Reservado, não faz nada
+    end
+    {O menu está sendo mostrado, apenas fecha o menu}
+    else
+    begin
+
+
+      Key := 0;
+    end;
+  end;
+
+end;
+
+procedure TfrmMain.lstitLoginClick(Sender: TObject);
+begin
+  {$IFDEF ANDROID}
+//  if not Assigned(FLogin) then
+//    FLogin := TfrmLogin.Create(Self);
+//
+//  MultiView1.MasterButton := FLogin.spbBack;
+//  {Forçamos o fechamento do menu no clique do item}
+//  MultiView1.HideMaster;
+//
+//  {Adiciona o Layout de Pedidos ao Layout Principal que controla tudo}
+//  lytMain.AddObject(FLogin.lytLogin);
+//
+//  {Deixa todos os layouts invisíveis e deixa o layout alvo visível}
+//  ShowForm(FLogin.lytLogin);
+  {$ENDIF}
+end;
+
+procedure TfrmMain.lstitTitulosClick(Sender: TObject);
+begin
+  if not Assigned(FUsuarios) then
+    FUsuarios := TfrmUsuarios.Create(Self);
+
+  MultiView1.MasterButton := FUsuarios.spbBack;
+  MultiView1.HideMaster;
+
+  self.Fill.Color := TAlphaColorRec.Orangered;
+
+  {Adiciona o Layout de Pedidos ao Layout Principal que controla tudo}
+  lytMain.AddObject(FUsuarios.lytUsuarios);
+
+  {Deixa todos os layouts invisíveis e deixa o layout alvo visível}
+  ShowForm(FUsuarios.lytUsuarios);
+end;
+
+procedure TfrmMain.lstitUsuariosClick(Sender: TObject);
+begin
+  if not Assigned(FUsuarios) then
+    FUsuarios := TfrmUsuarios.Create(Self);
+
+  MultiView1.MasterButton := FUsuarios.spbBack;
+  {Forçamos o fechamento do menu no clique do item}
+  MultiView1.HideMaster;
+
+  {Adiciona o Layout de Pedidos ao Layout Principal que controla tudo}
+  lytMain.AddObject(FUsuarios.lytUsuarios);
+
+  {Deixa todos os layouts invisíveis e deixa o layout alvo visível}
+  ShowForm(FUsuarios.lytUsuarios);
+end;
+
+Procedure TfrmMain.HideBackground;
+begin
+  recBackground.AnimateFloat('opacity', 0, 0.1);
+  recBackground.Visible := False;
+end;
+
+procedure TfrmMain.ShowBackground(AParent: TFmxObject; AOnClick: TNotifyEvent);
+begin
+  recBackground.OnClick := AOnClick;
+  recBackground.Parent  := AParent;
+  recBackground.BringToFront;
+  recBackground.Opacity := 0;
+  recBackground.Visible := True;
+  recBackground.AnimateFloat('opacity', 0.5, 0.1);
+end;
+
+procedure TfrmMain.ShowForm(AObject: TFmxObject);
+var
+  I           : Integer;
+  strFRM      : String;
+  FListaForms : TStringList;
+begin
+  FListaForms := TStringList.Create;
+
+  for I := 0 to Pred(Self.lytMain.Children.Count) do
+  begin
+    TControl(Self.lytMain.Children[I]).Visible :=
+      TControl(Self.lytMain.Children[I]) = TControl(AObject);
+
+    strFRM := UpperCase(TControl(Self.lytMain.Children[I]).Owner.Name);
+    if ((strFRM <> UpperCase(Self.Name))  and (strFRM <> UpperCase(FUsuarios.Name) )  ) and
+      not (TControl(Self.lytMain.Children[I]).Visible) then
+      {Adiciona na Lista de Destruição dos Forms}
+      FListaForms.Add(strFRM);
+  end;
+
+  for I := Pred(FListaForms.Count) downto 0 do
+  begin
+    if (Assigned(FUsuarios)) and (FListaForms[I] = UpperCase(FUsuarios.Name)) then
+    begin
+      FUsuarios.DisposeOf;
+      FUsuarios := nil;
+      FListaForms.Delete(I);
+    end;
+  end;
+
+  FListaForms.DisposeOf;
+end;
+
+
+procedure TfrmMain.MultiView1StartHiding(Sender: TObject);
+begin
+  frmMapa.WebBrowser1.Visible := True;
+   ShowMessage('web Ativo');
+end;
+
+procedure TfrmMain.MultiView1StartShowing(Sender: TObject);
+begin
+   frmMapa.WebBrowser1.Visible := False;
+   ShowMessage('web Inatitivo');
+end;
+
+end.
+

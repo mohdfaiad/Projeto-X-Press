@@ -1,0 +1,109 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'Form3'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnKeyUp = FormKeyUp
+  DesignerMasterStyle = 0
+  object Layout1: TLayout
+    Align = Client
+    Size.Width = 390.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object recBackground: TRectangle
+      Fill.Color = claBlack
+      Opacity = 0.500000000000000000
+      Position.X = 328.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 50.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+    end
+  end
+  object MultiView1: TMultiView
+    Size.Width = 250.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object lstMnuMain: TListBox
+      Align = Client
+      Size.Width = 249.000000000000000000
+      Size.Height = 480.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'transparentlistboxstyle'
+      TabOrder = 0
+      DisableFocusEffect = True
+      DefaultItemStyles.ItemStyle = 'listboxitemnodetail'
+      DefaultItemStyles.GroupHeaderStyle = ''
+      DefaultItemStyles.GroupFooterStyle = ''
+      GroupingKind = Grouped
+      Viewport.Width = 249.000000000000000000
+      Viewport.Height = 480.000000000000000000
+      object lstgrpListas: TListBoxGroupHeader
+        Size.Width = 249.000000000000000000
+        Size.Height = 56.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'Cadastros'
+      end
+      object lstitTitulos: TListBoxItem
+        ItemData.Accessory = aMore
+        Position.Y = 56.000000000000000000
+        Size.Width = 249.000000000000000000
+        Size.Height = 44.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        Text = 'T'#237'tulos'
+      end
+      object lstitUsuarios: TListBoxItem
+        ItemData.Accessory = aMore
+        Position.Y = 100.000000000000000000
+        Size.Width = 249.000000000000000000
+        Size.Height = 44.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 3
+        Text = 'Usu'#225'rios / Clientes'
+      end
+      object lstitTitulosAlugados: TListBoxItem
+        ItemData.Accessory = aMore
+        Position.Y = 144.000000000000000000
+        Size.Width = 249.000000000000000000
+        Size.Height = 44.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 4
+        Text = 'T'#237'tulos Alugados'
+      end
+      object lstgrpConfig: TListBoxGroupHeader
+        Position.Y = 188.000000000000000000
+        Size.Width = 249.000000000000000000
+        Size.Height = 56.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = 'Configura'#231#245'es'
+      end
+      object lstitLogin: TListBoxItem
+        ItemData.Accessory = aMore
+        Position.Y = 244.000000000000000000
+        Size.Width = 249.000000000000000000
+        Size.Height = 44.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 5
+        Text = 'Login'
+      end
+      object lstPreferencias: TListBoxItem
+        Position.Y = 288.000000000000000000
+        Size.Width = 249.000000000000000000
+        Size.Height = 44.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 6
+        Text = 'Prefer'#234'ncias'
+      end
+    end
+  end
+end

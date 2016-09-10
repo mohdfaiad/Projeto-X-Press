@@ -1,0 +1,236 @@
+object frmCadastro: TfrmCadastro
+  Left = 0
+  Top = 0
+  Caption = 'Form3'
+  ClientHeight = 480
+  ClientWidth = 640
+  Fill.Kind = Solid
+  Position = Default
+  FormStyle = StayOnTop
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 3
+  object Brush1: TBrushObject
+    StyleName = 'Brush1'
+    Brush.Color = xFFFFB206
+  end
+  object Layout1: TLayout
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object Layout2: TLayout
+      Align = Horizontal
+      Position.Y = 72.000000000000000000
+      Size.Width = 640.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 6
+      object RoundRect1: TRoundRect
+        Align = Center
+        Fill.Color = claWhite
+        Size.Width = 615.000000000000000000
+        Size.Height = 41.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = claGray
+        object Edit1: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Center
+          StyleLookup = 'transparentedit'
+          TabOrder = 0
+          Size.Width = 585.000000000000000000
+          Size.Height = 29.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Nome'
+        end
+      end
+    end
+    object Layout3: TLayout
+      Align = Horizontal
+      Position.Y = 160.000000000000000000
+      Size.Width = 640.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      object RoundRect3: TRoundRect
+        Align = Center
+        Fill.Color = claWhite
+        Size.Width = 615.000000000000000000
+        Size.Height = 41.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = claGray
+        object Edit3: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Center
+          StyleLookup = 'transparentedit'
+          TabOrder = 0
+          Size.Width = 585.000000000000000000
+          Size.Height = 29.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'E-mail'
+        end
+      end
+    end
+    object Layout4: TLayout
+      Align = Scale
+      Position.Y = 202.000000000000000000
+      Size.Width = 640.000000000000000000
+      Size.Height = 45.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      object RoundRect4: TRoundRect
+        Align = Center
+        Fill.Color = claWhite
+        Size.Width = 615.000000000000000000
+        Size.Height = 41.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = claGray
+        object Edit4: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Center
+          StyleLookup = 'transparentedit'
+          TabOrder = 0
+          Password = True
+          Size.Width = 585.000000000000000000
+          Size.Height = 29.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Senha'
+        end
+      end
+    end
+    object Layout5: TLayout
+      Align = Horizontal
+      Position.Y = 248.000000000000000000
+      Size.Width = 640.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      object RoundRect5: TRoundRect
+        Align = Center
+        Fill.Color = claWhite
+        Size.Width = 615.000000000000000000
+        Size.Height = 41.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = claGray
+        object Edit5: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Center
+          StyleLookup = 'transparentedit'
+          TabOrder = 0
+          Password = True
+          Size.Width = 585.000000000000000000
+          Size.Height = 29.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Confirmar senha'
+        end
+      end
+    end
+    object Layout6: TLayout
+      Align = Scale
+      Position.Y = 292.000000000000000000
+      Size.Width = 640.000000000000000000
+      Size.Height = 46.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object RoundRect6: TRoundRect
+        Align = Center
+        Fill.Color = claWhite
+        Size.Width = 615.000000000000000000
+        Size.Height = 41.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = claGray
+        object Edit6: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Center
+          StyleLookup = 'transparentedit'
+          TabOrder = 0
+          Size.Width = 585.000000000000000000
+          Size.Height = 29.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Data de Nascimento'
+          OnEnter = Edit6Enter
+          OnExit = Edit6Exit
+        end
+        object DateEdit1: TDateEdit
+          Date = 42619.000000000000000000
+          Position.X = 29.000000000000000000
+          Position.Y = 6.000000000000000000
+          Size.Width = 137.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          Visible = False
+        end
+      end
+    end
+    object Layout7: TLayout
+      Align = Horizontal
+      Position.Y = 336.000000000000000000
+      Size.Width = 640.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object Button2: TButton
+        Align = Center
+        Size.Width = 118.000000000000000000
+        Size.Height = 41.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'Cadastrar'
+        OnClick = Button2Click
+      end
+    end
+    object Layout8: TLayout
+      Align = Horizontal
+      Position.Y = 114.000000000000000000
+      Size.Width = 640.000000000000000000
+      Size.Height = 45.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      object RoundRect2: TRoundRect
+        Align = Center
+        Fill.Color = claWhite
+        Size.Width = 615.000000000000000000
+        Size.Height = 41.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = claGray
+        object Edit2: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Center
+          StyleLookup = 'transparentedit'
+          TabOrder = 1
+          Size.Width = 585.000000000000000000
+          Size.Height = 29.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Sobrenome'
+        end
+      end
+    end
+    object ToolBar1: TToolBar
+      Size.Width = 640.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 7
+      TintColor = claOrange
+      object Label1: TLabel
+        Align = Center
+        Size.Width = 640.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.HorzAlign = Center
+        Text = 'Cadastro'
+        object Button1: TButton
+          Align = Left
+          Size.Width = 73.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          Text = 'Voltar'
+          OnClick = Button1Click
+        end
+      end
+    end
+  end
+end

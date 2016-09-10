@@ -1,0 +1,71 @@
+inherited frmCadastro_NmXhdpiPh: TfrmCadastro_NmXhdpiPh
+  ClientHeight = 615
+  ClientWidth = 400
+  DesignerMasterStyle = 3
+  inherited Layout1: TLayout
+    Size.Width = 400.000000000000000000
+    Size.Height = 567.000000000000000000
+    inherited Layout2: TLayout
+      Position.Y = 42.000000000000000000
+      Size.Width = 400.000000000000000000
+      Size.Height = 53.812500000000000000
+      inherited RoundRect1: TRoundRect
+        Position.Y = 8.000000000000000000
+        Size.Width = 183.000000000000000000
+      end
+      inherited RoundRect2: TRoundRect
+        Position.X = 208.000000000000000000
+        Position.Y = 8.000000000000000000
+        Size.Width = 185.000000000000000000
+        inherited Edit2: TEdit
+          Position.X = 24.000000000000000000
+        end
+      end
+    end
+    inherited Layout3: TLayout
+      Position.Y = 105.000000000000000000
+      Size.Width = 400.000000000000000000
+      Size.Height = 53.812500000000000000
+      inherited RoundRect3: TRoundRect
+        Position.X = 8.000000000000000000
+        Position.Y = 8.000000000000000000
+        Size.Width = 377.000000000000000000
+      end
+    end
+    inherited Layout4: TLayout
+      Position.Y = 168.000000000000000000
+      Size.Width = 400.000000000000000000
+      Size.Height = 53.812500000000000000
+      inherited RoundRect4: TRoundRect
+        Position.X = 8.000000000000000000
+        Position.Y = 8.000000000000000000
+        Size.Width = 377.000000000000000000
+      end
+    end
+    inherited Layout5: TLayout
+      Position.Y = 231.000000000000000000
+      Size.Width = 400.000000000000000000
+      Size.Height = 53.812500000000000000
+      inherited RoundRect5: TRoundRect
+        Position.Y = 8.000000000000000000
+        Size.Width = 377.000000000000000000
+      end
+    end
+    inherited Layout6: TLayout
+      Position.Y = 294.000000000000000000
+      Size.Width = 400.000000000000000000
+      Size.Height = 53.812500000000000000
+      inherited RoundRect6: TRoundRect
+        Position.Y = 8.000000000000000000
+      end
+    end
+    inherited Layout7: TLayout
+      Position.Y = 357.000000000000000000
+      Size.Width = 400.000000000000000000
+      Size.Height = 53.812500000000000000
+    end
+  end
+  inherited ToolBar1: TToolBar
+    Size.Width = 400.000000000000000000
+  end
+end

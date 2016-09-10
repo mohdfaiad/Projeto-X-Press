@@ -1,0 +1,45 @@
+inherited frmLogin_NmXhdpiPh: TfrmLogin_NmXhdpiPh
+  ClientHeight = 615
+  ClientWidth = 400
+  DesignerMasterStyle = 3
+  inherited Layout1: TLayout
+    Size.Width = 400.000000000000000000
+    Size.Height = 615.000000000000000000
+    inherited Layout2: TLayout
+      Size.Width = 400.000000000000000000
+      inherited ImageViewer2: TImageViewer
+        Viewport.Width = 153.000000000000000000
+        Viewport.Height = 145.000000000000000000
+      end
+    end
+    inherited Layout3: TLayout
+      Size.Width = 400.000000000000000000
+      inherited RoundRect1: TRoundRect
+        inherited Edit1: TEdit
+          Size.Height = 29.000000000000000000
+        end
+      end
+    end
+    inherited Layout4: TLayout
+      Size.Width = 400.000000000000000000
+      inherited RoundRect2: TRoundRect
+        inherited Edit2: TEdit
+          Size.Height = 29.000000000000000000
+        end
+      end
+    end
+    inherited Layout5: TLayout
+      Size.Width = 400.000000000000000000
+    end
+    inherited Layout6: TLayout
+      Position.Y = 591.000000000000000000
+      Size.Width = 400.000000000000000000
+      inherited Label2: TLabel
+        Size.Width = 400.000000000000000000
+      end
+    end
+    inherited Layout7: TLayout
+      Size.Width = 400.000000000000000000
+    end
+  end
+end
